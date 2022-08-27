@@ -1,5 +1,4 @@
 # Usmf Types
-- [UsmfDictionary](#usmfdictionary)
 - [UsmfEvent](#usmfevent)
 - [UsmfHeader](#usmfheader)
 - [UsmfFixture](#usmffixture)
@@ -8,9 +7,6 @@
 - [UsmfSelection](#usmfselection)
 - [UsmfSourceSelection](#usmfsourceselection)
 - [UsmfFixtureStatus](#usmffixturestatus)
-- [UsmfEventBuilder](#usmfeventbuilder)
-- [UsmfHashSet](#usmfhashset)
-- [UsmfMaterializer](#usmfmaterializer)
 - [UsmfFixtureNode](#usmffixturenode)
 - [UsmfMarketNode](#usmfmarketnode)
 - [UsmfSelectionNode](#usmfselectionnode)
@@ -20,15 +16,6 @@
 - [UsmfSelectionStateNode](#usmfselectionstatenode)
 - [UsmfSourceSelectionStateNode](#usmfsourceselectionstatenode)
 - [UsmfFixtureParticipantStateNode](#usmffixtureparticipantstatenode)
-## UsmfDictionary
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| Order | - | List\<TKey> |  |
-| Comparer | - | IEqualityComparer\<TKey> |  |
-| Count | - | Integer |  |
-| Keys | - | KeyCollection\<TKey,TValue> |  |
-| Values | - | ValueCollection\<TKey,TValue> |  |
-| Item | - | TValue |  |
 ## UsmfEvent
 | Name | Minified | Type | Description |
 | - | - | - | - |
@@ -91,14 +78,6 @@
 | Inplay | 1 |  |
 | Completed | 2 |  |
 | SweeperCompleted | 3 |  |
-## UsmfEventBuilder
-## UsmfHashSet
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| Order | - | List\<T> |  |
-| Count | - | Integer |  |
-| Comparer | - | IEqualityComparer\<T> |  |
-## UsmfMaterializer
 ## UsmfFixtureNode
 | Name | Minified | Type | Description |
 | - | - | - | - |
