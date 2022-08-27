@@ -17,67 +17,75 @@
 - [UsmfSourceSelectionStateNode](#usmfsourceselectionstatenode)
 - [UsmfFixtureParticipantStateNode](#usmffixtureparticipantstatenode)
 ## UsmfEvent
+Encapsulates a single unified sports materialized format event (a fact).
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| Header | H | [UsmfHeader](#usmfheader) |  |
-| Fixtures | F | [UsmfFixtureNode](#usmffixturenode) |  |
+| Header | H | [UsmfHeader](#usmfheader) | Contains high level ordering, synchronisation, and origin data for the event. |
+| Fixtures | F | [UsmfFixtureNode](#usmffixturenode) | Contains data pertaining to the materialized state of fixtures. |
 ## UsmfHeader
+Contains high level ordering, synchronisation, and origin data for the event.
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| UtcTimestamp | UT | Date |  |
+| UtcTimestamp | UT | Date | The time at which the data required to generate this event was constituted. |
 ## UsmfFixture
+Contains data pertaining to the state of a fixture.
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| Id | I | String |  |
-| SportId | SI | String |  |
-| SportName | SN | String |  |
-| RegionId | RI | String |  |
-| RegionName | RN | String |  |
-| CompetitionId | CI | String |  |
-| CompetitionName | CN | String |  |
-| UtcStart | US | Nullable\<Date> |  |
-| Participants | P | [UsmfFixtureParticipant](#usmffixtureparticipant) |  |
-| FixtureStatus | FS | Nullable\<UsmfFixtureStatus> |  |
-| IsVirtual | IV | Boolean |  |
+| Id | I | String | The unique identifier of the fixture. |
+| SportId | SI | String | The unique identifier of the sport of this fixture. |
+| SportName | SN | String | The name of the sport of this fixture. |
+| RegionId | RI | String | The unique identifier of the region of this fixture. |
+| RegionName | RN | String | The name of the region of this fixture. |
+| CompetitionId | CI | String | The unique identifier of the competition of this fixture. |
+| CompetitionName | CN | String | The name of the competition of this fixture. |
+| UtcStart | US | Nullable\<Date> | The time at which this fixture is due to start. |
+| Participants | P | [UsmfFixtureParticipant](#usmffixtureparticipant) | Contains data pertaining to the state of participants in this fixture. |
+| FixtureStatus | FS | Nullable\<UsmfFixtureStatus> | The lifecycle status of this fixture. |
+| IsVirtual | IV | Boolean | Whether this is a simulated virtual fixture. |
 ## UsmfFixtureParticipant
+Contains data pertaining to the state of a participant.
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| Id | I | String |  |
-| Name | N | String |  |
+| Id | I | String | The unique identifier of the participant. |
+| Name | N | String | The name of the participant. |
 ## UsmfMarket
+Contains data pertaining to the state of a market.
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| Id | I | String |  |
-| FixtureId | FI | String |  |
-| TypeId | TI | String |  |
-| Name | N | String |  |
+| Id | I | String | The unique identifier of the market. |
+| FixtureId | FI | String | The unique identifier of the fixture. |
+| TypeId | TI | String | The type of the market. |
+| Name | N | String | The name of the market. |
 ## UsmfSelection
+Contains data pertaining to the state of a selection.
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| Id | I | String |  |
-| FixtureId | FI | String |  |
-| MarketId | MI | String |  |
-| Line | L | String |  |
-| Name | N | String |  |
+| Id | I | String | The unique identifier of the selection. |
+| FixtureId | FI | String | The unique identifier of the fixture. |
+| MarketId | MI | String | The unique identifier of the market. |
+| Line | L | String | The line the selection pertains to. |
+| Name | N | String | The name of the selection. |
 ## UsmfSourceSelection
+Contains data pertaining to the state of a selection from a single source.
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| SelectionId | SI | String |  |
-| SourceId | SO | String |  |
-| FixtureId | FI | String |  |
-| MarketId | MI | String |  |
-| Price | P | Double |  |
-| PriceVolume | PV | Double |  |
-| LayPriceVolume | LPV | Double |  |
-| BackLiquidity | BL | Double |  |
-| UtcUpdatedFromSource | UU | Date |  |
+| SelectionId | SI | String | The unique identifier of the selection. |
+| SourceId | SO | String | The unique identifier of the source. |
+| FixtureId | FI | String | The unique identifier of the fixture. |
+| MarketId | MI | String | The unique identifier of the market. |
+| Price | P | Double | The price of the source selection. |
+| PriceVolume | PV | Double | The price volume of the source selection. |
+| LayPriceVolume | LPV | Double | The lay price volume of the source selection. |
+| BackLiquidity | BL | Double | The back liquidity of the source selection. |
+| UtcUpdatedFromSource | UU | Date | The time when the source selection was updated from the source. |
 ## UsmfFixtureStatus
+Represents the lifecycle status of a fixture.
 | Name | Value | Description |
 | - | - | - |
-| Pregame | 0 |  |
-| Inplay | 1 |  |
-| Completed | 2 |  |
-| SweeperCompleted | 3 |  |
+| Pregame | 0 | Fixture has not started. |
+| Inplay | 1 | Fixture is in progress. |
+| Completed | 2 | Fixture is completed. |
+| SweeperCompleted | 3 | Fixture has been swept (cleaned up). |
 ## UsmfFixtureNode
 | Name | Minified | Type | Description |
 | - | - | - | - |
