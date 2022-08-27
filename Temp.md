@@ -110,3 +110,9 @@ Provides the ability to distinguish between a property being unavailable or expl
 | Value | V | T | The provided value of this property (must be set if the UsdfOptional is not null. |
 ## UsdfFixtureStatus
 Represents the lifecycle status of a fixture.
+| Name | Value | Description |
+| - | - | - |
+| Pregame | 0 | Fixture has not started. |
+| Inplay | 1 | Fixture is in progress. |
+| Completed | 2 | Fixture is completed. |
+| SweeperCompleted | 3 | Fixture has been swept (cleaned up). |
