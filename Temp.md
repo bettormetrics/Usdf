@@ -13,37 +13,37 @@
 Encapsulates a single unified sports data format event (a fact).
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| Header | H | [UsdfHeader](#usdfheader) | Contains high level ordering, synchronisation, and origin data for the event. |
-| Fixture | F | [UsdfFixture](#usdffixture) | Contains data pertaining to the state of fixtures. |
-| Market | M | [UsdfMarket](#usdfmarket) | Contains data pertaining to the state of markets. |
-| Selection | SL | [UsdfSelection](#usdfselection) | Contains data pertaining to the state of selections. |
-| SourceSelection | SS | [UsdfSourceSelection](#usdfsourceselection) | Contains data pertaining to the state of selections from a single source. |
-| Bets | B | [UsdfBet](#usdfbet) | Contains data pertaining to the state of bets. |
+| Header | H | [UsdfHeader](#usdfheader) |  |
+| Fixture | F | [UsdfFixture](#usdffixture) |  |
+| Market | M | [UsdfMarket](#usdfmarket) |  |
+| Selection | SL | [UsdfSelection](#usdfselection) |  |
+| SourceSelection | SS | [UsdfSourceSelection](#usdfsourceselection) |  |
+| Bets | B | [UsdfBet](#usdfbet) |  |
 ## UsdfHeader
 Contains high level ordering, synchronisation, and origin data for the event.
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| PartitionKey | PK | String | The partition key for this event, often, but not always, the unique id of the fixture. |
-| ProviderId | PI | Integer | The unique identifier of the provider of the data required to generate this event. |
-| VentId | VI | String | The origin of the data required to generate this event within the provider system. |
-| UtcTimestamp | UT | Date | The time at which the data required to generate this event was constituted. |
+| PartitionKey | PK | String |  |
+| ProviderId | PI | Integer |  |
+| VentId | VI | String |  |
+| UtcTimestamp | UT | Date |  |
 ## UsdfFixture
 Contains data pertaining to the state of a fixture.
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| Id | I | String | The unique identifier of the fixture. |
-| SportId | SI | [UsdfOptional](#usdfoptional)\<String> | The unique identifier of the sport of this fixture (optional). |
-| SportName | SN | [UsdfOptional](#usdfoptional)\<String> | The name of the sport of this fixture (optional). |
-| RegionId | RI | [UsdfOptional](#usdfoptional)\<String> | The unique identifier of the region of this fixture (optional). |
-| RegionName | RN | [UsdfOptional](#usdfoptional)\<String> | The name of the region of this fixture (optional). |
-| CompetitionId | CI | [UsdfOptional](#usdfoptional)\<String> | The unique identifier of the competition of this fixture (optional). |
-| CompetitionName | CN | [UsdfOptional](#usdfoptional)\<String> | The name of the competition of this fixture (optional). |
-| Participant | P | [UsdfParticipant](#usdfparticipant) | Contains data pertaining to the state of participants in this fixture. |
-| UtcStart | US | [UsdfOptional](#usdfoptional)\<Date> | The time at which this fixture is due to start (optional). |
-| IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> | Whether this fixture has been deleted (optional). |
-| IsSuspendedUntilPriced | ISUP | [UsdfOptional](#usdfoptional)\<Boolean> | Whether all markets in this fixture are suspended until subsequent prices are received (optional). |
-| FixtureStatus | FS | [UsdfOptional](#usdfoptional)\<UsdfFixtureStatus> | The lifecycle status of this fixture (optional). |
-| IsVirtual | IV | [UsdfOptional](#usdfoptional)\<Boolean> | Whether this is a simulated virtual fixture (optional). |
+| Id | I | String |  |
+| SportId | SI | [UsdfOptional](#usdfoptional)\<String> |  |
+| SportName | SN | [UsdfOptional](#usdfoptional)\<String> |  |
+| RegionId | RI | [UsdfOptional](#usdfoptional)\<String> |  |
+| RegionName | RN | [UsdfOptional](#usdfoptional)\<String> |  |
+| CompetitionId | CI | [UsdfOptional](#usdfoptional)\<String> |  |
+| CompetitionName | CN | [UsdfOptional](#usdfoptional)\<String> |  |
+| Participant | P | [UsdfParticipant](#usdfparticipant) |  |
+| UtcStart | US | [UsdfOptional](#usdfoptional)\<Date> |  |
+| IsSuspendedUntilPriced | ISUP | [UsdfOptional](#usdfoptional)\<Boolean> |  |
+| FixtureStatus | FS | [UsdfOptional](#usdfoptional)\<UsdfFixtureStatus> |  |
+| IsVirtual | IV | [UsdfOptional](#usdfoptional)\<Boolean> |  |
+| IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> |  |
 ## UsdfParticipant
 Contains data pertaining to the state of a participant.
 | Name | Minified | Type | Description |
@@ -92,7 +92,8 @@ Contains data pertaining to the state of a bet.
 | - | - | - | - |
 | Id | I | String |  |
 | CustomerId | CI | String |  |
-| UtcPlacement | UP | Date |  |
+| UtcPlaced | UP | Date |  |
+| UceAccepted | UA | Date |  |
 | FixtureId | FI | [UsdfOptional](#usdfoptional)\<String> |  |
 | MarketId | MI | [UsdfOptional](#usdfoptional)\<String> |  |
 | SelectionId | SI | String |  |
