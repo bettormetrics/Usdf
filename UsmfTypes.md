@@ -32,58 +32,58 @@
 ## UsmfEvent
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| Header | - | [UsmfHeader](#usmfheader) |  |
-| Fixtures | - | [UsmfFixtureNode](#usmffixturenode) |  |
+| Header | H | [UsmfHeader](#usmfheader) |  |
+| Fixtures | F | [UsmfFixtureNode](#usmffixturenode) |  |
 ## UsmfHeader
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| UtcTimestamp | - | Date |  |
+| UtcTimestamp | UT | Date |  |
 ## UsmfFixture
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| Id | - | String |  |
-| SportId | - | String |  |
-| SportName | - | String |  |
-| RegionId | - | String |  |
-| RegionName | - | String |  |
-| CompetitionId | - | String |  |
-| CompetitionName | - | String |  |
-| UtcStart | - | Nullable\<Date> |  |
-| Participants | - | [UsmfFixtureParticipant](#usmffixtureparticipant) |  |
-| FixtureStatus | - | Nullable\<UsmfFixtureStatus> |  |
-| IsVirtual | - | Boolean |  |
+| Id | I | String |  |
+| SportId | SI | String |  |
+| SportName | SN | String |  |
+| RegionId | RI | String |  |
+| RegionName | RN | String |  |
+| CompetitionId | CI | String |  |
+| CompetitionName | CN | String |  |
+| UtcStart | US | Nullable\<Date> |  |
+| Participants | P | [UsmfFixtureParticipant](#usmffixtureparticipant) |  |
+| FixtureStatus | FS | Nullable\<UsmfFixtureStatus> |  |
+| IsVirtual | IV | Boolean |  |
 ## UsmfFixtureParticipant
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| Id | - | String |  |
-| Name | - | String |  |
+| Id | I | String |  |
+| Name | N | String |  |
 ## UsmfMarket
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| Id | - | String |  |
-| FixtureId | - | String |  |
-| TypeId | - | String |  |
-| Name | - | String |  |
+| Id | I | String |  |
+| FixtureId | FI | String |  |
+| TypeId | TI | String |  |
+| Name | N | String |  |
 ## UsmfSelection
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| Id | - | String |  |
-| FixtureId | - | String |  |
-| MarketId | - | String |  |
-| Line | - | String |  |
-| Name | - | String |  |
+| Id | I | String |  |
+| FixtureId | FI | String |  |
+| MarketId | MI | String |  |
+| Line | L | String |  |
+| Name | N | String |  |
 ## UsmfSourceSelection
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| SelectionId | - | String |  |
-| SourceId | - | String |  |
-| FixtureId | - | String |  |
-| MarketId | - | String |  |
-| Price | - | Double |  |
-| PriceVolume | - | Double |  |
-| LayPriceVolume | - | Double |  |
-| BackLiquidity | - | Double |  |
-| UtcUpdatedFromSource | - | Date |  |
+| SelectionId | SI | String |  |
+| SourceId | SO | String |  |
+| FixtureId | FI | String |  |
+| MarketId | MI | String |  |
+| Price | P | Double |  |
+| PriceVolume | PV | Double |  |
+| LayPriceVolume | LPV | Double |  |
+| BackLiquidity | BL | Double |  |
+| UtcUpdatedFromSource | UU | Date |  |
 ## UsmfFixtureStatus
 | Name | Value | Description |
 | - | - | - |
