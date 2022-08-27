@@ -14,9 +14,6 @@
 - [UsmfFixtureNode](#usmffixturenode)
 - [UsmfMarketNode](#usmfmarketnode)
 - [UsmfSelectionNode](#usmfselectionnode)
-- [UsmfStateNode](#usmfstatenode)
-- [UsmfStateNode](#usmfstatenode)
-- [UsmfStateNode`3](#usmfstatenode`3)
 - [UsmfBookStateNode](#usmfbookstatenode)
 - [UsmfFixtureStateNode](#usmffixturestatenode)
 - [UsmfMarketStateNode](#usmfmarketstatenode)
@@ -120,12 +117,6 @@
 | Id | - | String |  |
 | Selection | - | [UsmfSelection](#usmfselection) |  |
 | SourceSelections | - | [UsmfSourceSelection](#usmfsourceselection) |  |
-## UsmfStateNode
-## UsmfStateNode
-## UsmfStateNode`3
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| Children | - | HashMap\<TChildEntityKey,TChildEntityNode> |  |
 ## UsmfBookStateNode
 | Name | Minified | Type | Description |
 | - | - | - | - |
