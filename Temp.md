@@ -1,4 +1,4 @@
-# Commands
+# Types
 - [UsdfEvent](#usdfevent)
 - [UsdfHeader](#usdfheader)
 - [UsdfFixture](#usdffixture)
