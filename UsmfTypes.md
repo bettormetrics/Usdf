@@ -1,5 +1,5 @@
 # Usmf Types
-- [UsmfDictionary`2](#usmfdictionary`2)
+- [UsmfDictionary](#usmfdictionary)
 - [UsmfEvent](#usmfevent)
 - [UsmfHeader](#usmfheader)
 - [UsmfFixture](#usmffixture)
@@ -20,7 +20,7 @@
 - [UsmfSelectionStateNode](#usmfselectionstatenode)
 - [UsmfSourceSelectionStateNode](#usmfsourceselectionstatenode)
 - [UsmfFixtureParticipantStateNode](#usmffixtureparticipantstatenode)
-## UsmfDictionary`2
+## UsmfDictionary
 | Name | Minified | Type | Description |
 | - | - | - | - |
 | Order | - | List\<TKey> |  |
@@ -132,7 +132,7 @@
 | CompetitionId | - | String |  |
 | CompetitionName | - | String |  |
 | UtcStart | - | Nullable\<Date> |  |
-| Participants | - | [UsmfDictionary`2](#usmfdictionary`2)\<String,UsmfFixtureParticipantStateNode> |  |
+| Participants | - | HashMap\<String,UsmfFixtureParticipantStateNode> |  |
 | FixtureStatus | - | Nullable\<UsmfFixtureStatus> |  |
 | IsVirtual | - | Boolean |  |
 | Children | - | HashMap\<String,UsmfMarketStateNode> |  |
