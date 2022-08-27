@@ -87,23 +87,26 @@ Represents the lifecycle status of a fixture.
 | Completed | 2 | Fixture is completed. |
 | SweeperCompleted | 3 | Fixture has been swept (cleaned up). |
 ## UsmfFixtureNode
+Represents the fixture level in an acyclic sportsbook hierarchy.
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| Id | - | String |  |
-| Fixture | - | [UsmfFixture](#usmffixture) |  |
-| Markets | - | [UsmfMarketNode](#usmfmarketnode) |  |
+| Id | - | String | The unique identifier of the fixture. |
+| Fixture | - | [UsmfFixture](#usmffixture) | The fixture entity associated with this node. |
+| Markets | - | [UsmfMarketNode](#usmfmarketnode) | Market nodes within this fixture. |
 ## UsmfMarketNode
+Represents the market level in an acyclic sportsbook hierarchy.
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| Id | - | String |  |
-| Market | - | [UsmfMarket](#usmfmarket) |  |
-| Selections | - | [UsmfSelectionNode](#usmfselectionnode) |  |
+| Id | - | String | The unique identifier of the market. |
+| Market | - | [UsmfMarket](#usmfmarket) | The market entity associated with this node. |
+| Selections | - | [UsmfSelectionNode](#usmfselectionnode) | Selection nodes within this market. |
 ## UsmfSelectionNode
+Represents the selection level in an acyclic sportsbook hierarchy.
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| Id | - | String |  |
-| Selection | - | [UsmfSelection](#usmfselection) |  |
-| SourceSelections | - | [UsmfSourceSelection](#usmfsourceselection) |  |
+| Id | - | String | The unique identifier of the selection. |
+| Selection | - | [UsmfSelection](#usmfselection) | The selection entity associated with this node. |
+| SourceSelections | - | [UsmfSourceSelection](#usmfsourceselection) | Source selection nodes within this selection. |
 ## UsmfBookStateNode
 | Name | Minified | Type | Description |
 | - | - | - | - |
