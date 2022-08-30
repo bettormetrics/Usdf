@@ -93,7 +93,7 @@ Contains data pertaining to the state of a bet.
 | Id | I | String | The unique identifier of the bet. |
 | CustomerId | CI | String | The unique identifier of the customer. |
 | UtcPlaced | UP | Date | The time when the bet was placed. |
-| UceAccepted | UA | Date | The time when the bet was accepted. |
+| UtcAccepted | UA | Date | The time when the bet was accepted. |
 | FixtureId | FI | [UsdfOptional](#usdfoptional)\<String> | The unique identifier of the fixture (optional). |
 | MarketId | MI | [UsdfOptional](#usdfoptional)\<String> | The unique identifier of the market (optional). |
 | SelectionId | SI | String | The unique identifier of the selection. |
