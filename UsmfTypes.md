@@ -2,10 +2,6 @@
 - [UsmfEvent](#usmfevent)
 - [UsmfHeader](#usmfheader)
 - [UsmfFixture](#usmffixture)
-- [UsmfScoreboard](#usmfscoreboard)
-- [UsmfScoreboardPhaseId](#usmfscoreboardphaseid)
-- [UsmfScoreTypeId](#usmfscoretypeid)
-- [UsmfScoreEvent](#usmfscoreevent)
 - [UsmfBet](#usmfbet)
 - [UsmfFixtureParticipant](#usmffixtureparticipant)
 - [UsmfMarket](#usmfmarket)
@@ -48,32 +44,6 @@ Contains data pertaining to the state of a fixture.
 | Participants | P | [UsmfFixtureParticipant](#usmffixtureparticipant) | Contains data pertaining to the state of participants in this fixture. |
 | FixtureStatus | FS | Nullable\<UsmfFixtureStatus> | The lifecycle status of this fixture. |
 | IsVirtual | IV | Boolean | Whether this is a simulated virtual fixture. |
-## UsmfScoreboard
-Contains data pertaining to the state of a scoreboard.
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| PhaseId | - | [UsmfScoreboardPhaseId](#usmfscoreboardphaseid) |  |
-| Score | - | HashMap\<UsmfScoreTypeId,Double> |  |
-| ScoreEvents | - | [UsmfScoreEvent](#usmfscoreevent) |  |
-## UsmfScoreboardPhaseId
-| Name | Value | Description |
-| - | - | - |
-| Unknown | 0 |  |
-| Active | 1 |  |
-| Break | 2 |  |
-## UsmfScoreTypeId
-| Name | Value | Description |
-| - | - | - |
-| Goal | 0 |  |
-| RedCard | 1 |  |
-| YellowCard | 2 |  |
-## UsmfScoreEvent
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| TypeId | - | [UsmfScoreTypeId](#usmfscoretypeid) |  |
-| SideId | - | Integer |  |
-| Points | - | Double |  |
-| UtcEventTime | - | Date |  |
 ## UsmfBet
 Contains data pertaining to a placed bet.
 | Name | Minified | Type | Description |
