@@ -4,9 +4,6 @@
 - [UsdfPartitionKeyStrategy](#usdfpartitionkeystrategy)
 - [UsdfEventOrderingStrategy](#usdfeventorderingstrategy)
 - [UsdfFixture](#usdffixture)
-- [UsdfScoreboard](#usdfscoreboard)
-- [UsdfScore](#usdfscore)
-- [UsdfScoreEvent](#usdfscoreevent)
 - [UsdfParticipant](#usdfparticipant)
 - [UsdfMarket](#usdfmarket)
 - [UsdfSelection](#usdfselection)
@@ -20,7 +17,6 @@ Encapsulates a single unified sports data format event (a fact).
 | - | - | - | - |
 | Header | H | [UsdfHeader](#usdfheader) | Contains high level ordering, synchronisation, and origin data for the event. |
 | Fixture | F | [UsdfFixture](#usdffixture) | Contains data pertaining to the partial state of fixtures. |
-| Scoreboard | S | [UsdfScoreboard](#usdfscoreboard) | Contains data pertaining to the partial state of fixture scoreboards. |
 | Market | M | [UsdfMarket](#usdfmarket) | Contains data pertaining to the partial state of markets. |
 | Selection | SL | [UsdfSelection](#usdfselection) | Contains data pertaining to the partial state of selections. |
 | SourceSelection | SS | [UsdfSourceSelection](#usdfsourceselection) | Contains data pertaining to the partial state of selections from a single source. |
@@ -64,24 +60,6 @@ Contains data pertaining to the partial state of a fixture.
 | FixtureStatus | FS | [UsdfOptional](#usdfoptional)\<UsdfFixtureStatus> | The lifecycle status of this fixture (optional). |
 | IsVirtual | IV | [UsdfOptional](#usdfoptional)\<Boolean> | Whether this is a simulated virtual fixture (optional). |
 | IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the entity has been deleted (optional). |
-## UsdfScoreboard
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| FixtureId | FI | String |  |
-| Scores | S | [UsdfScore](#usdfscore) |  |
-| ScoreEvents | SE | [UsdfScoreEvent](#usdfscoreevent) |  |
-| PeriodId | PI | [UsdfOptional](#usdfoptional)\<String> |  |
-| IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> |  |
-## UsdfScore
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| Id | I | String |  |
-## UsdfScoreEvent
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| Id | I | String |  |
-| EventType | ET | String |  |
-| UtcTimestamp | UT | Date |  |
 ## UsdfParticipant
 Contains data pertaining to the partial state of a participant.
 | Name | Minified | Type | Description |
