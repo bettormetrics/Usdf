@@ -1,7 +1,12 @@
 # Usdf Types
 - [UsdfEvent](#usdfevent)
 - [UsdfHeader](#usdfheader)
+- [UsdfPartitionKeyStrategy](#usdfpartitionkeystrategy)
+- [UsdfEventOrderingStrategy](#usdfeventorderingstrategy)
 - [UsdfFixture](#usdffixture)
+- [UsdfScoreboard](#usdfscoreboard)
+- [UsdfScore](#usdfscore)
+- [UsdfScoreEvent](#usdfscoreevent)
 - [UsdfParticipant](#usdfparticipant)
 - [UsdfMarket](#usdfmarket)
 - [UsdfSelection](#usdfselection)
@@ -14,21 +19,36 @@ Encapsulates a single unified sports data format event (a fact).
 | Name | Minified | Type | Description |
 | - | - | - | - |
 | Header | H | [UsdfHeader](#usdfheader) | Contains high level ordering, synchronisation, and origin data for the event. |
-| Fixture | F | [UsdfFixture](#usdffixture) | Contains data pertaining to the state of fixtures. |
-| Market | M | [UsdfMarket](#usdfmarket) | Contains data pertaining to the state of markets. |
-| Selection | SL | [UsdfSelection](#usdfselection) | Contains data pertaining to the state of selections. |
-| SourceSelection | SS | [UsdfSourceSelection](#usdfsourceselection) | Contains data pertaining to the state of selections from a single source. |
-| Bets | B | [UsdfBet](#usdfbet) | Contains data pertaining to the state of bets. |
+| Fixture | F | [UsdfFixture](#usdffixture) | Contains data pertaining to the partial state of fixtures. |
+| Scoreboard | S | [UsdfScoreboard](#usdfscoreboard) | Contains data pertaining to the partial state of fixture scoreboards. |
+| Market | M | [UsdfMarket](#usdfmarket) | Contains data pertaining to the partial state of markets. |
+| Selection | SL | [UsdfSelection](#usdfselection) | Contains data pertaining to the partial state of selections. |
+| SourceSelection | SS | [UsdfSourceSelection](#usdfsourceselection) | Contains data pertaining to the partial state of selections from a single source. |
+| Bets | B | [UsdfBet](#usdfbet) | Contains data pertaining to the partial state of bets. |
 ## UsdfHeader
 Contains high level ordering, synchronisation, and origin data for the event.
 | Name | Minified | Type | Description |
 | - | - | - | - |
-| PartitionKey | PK | String | The partition key for this event, often, but not always, the unique id of the fixture. |
+| PartitionKey | PK | String | The partition key for this event, often, but not always, the unique identifier of the fixture. |
+| PartitionKeyStrategy | PKS | [UsdfPartitionKeyStrategy](#usdfpartitionkeystrategy) | The partition key strategy for this event, often, but not always, the unique identifier of the fixture. |
+| EventOrderingStrategy | EOS | [UsdfEventOrderingStrategy](#usdfeventorderingstrategy) | The ordering strategy for this event stream in case of out of order events. |
 | ProviderId | PI | Integer | The unique identifier of the provider of the data required to generate this event. |
 | VentId | VI | String | The origin of the data required to generate this event within the provider system. |
+| VentPriority | VP | Integer | The priority of the origin of the data required to generate this event within the provider system. |
 | UtcTimestamp | UT | Date | The time at which the data required to generate this event was constituted. |
+## UsdfPartitionKeyStrategy
+The partition key strategy for this event, often, but not always, the unique identifier of the fixture.
+| Name | Value | Description |
+| - | - | - |
+| FixtureId | 0 | This Usdf event stream has been being partitioned by the unique identifier of the fixture. |
+## UsdfEventOrderingStrategy
+The ordering strategy for this event stream in case of out of order events.
+| Name | Value | Description |
+| - | - | - |
+| None | 0 | This event stream should not be reordered. |
+| HeaderTimestamp | 1 | This event stream should be reordered by the UtcTimestamp value in the header. |
 ## UsdfFixture
-Contains data pertaining to the state of a fixture.
+Contains data pertaining to the partial state of a fixture.
 | Name | Minified | Type | Description |
 | - | - | - | - |
 | Id | I | String | The unique identifier of the fixture. |
@@ -38,21 +58,39 @@ Contains data pertaining to the state of a fixture.
 | RegionName | RN | [UsdfOptional](#usdfoptional)\<String> | The name of the region of this fixture (optional). |
 | CompetitionId | CI | [UsdfOptional](#usdfoptional)\<String> | The unique identifier of the competition of this fixture (optional). |
 | CompetitionName | CN | [UsdfOptional](#usdfoptional)\<String> | The name of the competition of this fixture (optional). |
-| Participant | P | [UsdfParticipant](#usdfparticipant) | Contains data pertaining to the state of participants in this fixture. |
+| Participant | P | [UsdfParticipant](#usdfparticipant) | Contains data pertaining to the partial state of participants in this fixture. |
 | UtcStart | US | [UsdfOptional](#usdfoptional)\<Date> | The time at which this fixture is due to start (optional). |
 | IsSuspendedUntilPriced | ISUP | [UsdfOptional](#usdfoptional)\<Boolean> | Whether all markets in this fixture are suspended until subsequent prices are received (optional). |
 | FixtureStatus | FS | [UsdfOptional](#usdfoptional)\<UsdfFixtureStatus> | The lifecycle status of this fixture (optional). |
 | IsVirtual | IV | [UsdfOptional](#usdfoptional)\<Boolean> | Whether this is a simulated virtual fixture (optional). |
 | IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the entity has been deleted (optional). |
+## UsdfScoreboard
+| Name | Minified | Type | Description |
+| - | - | - | - |
+| FixtureId | FI | String |  |
+| Scores | S | [UsdfScore](#usdfscore) |  |
+| ScoreEvents | SE | [UsdfScoreEvent](#usdfscoreevent) |  |
+| PeriodId | PI | [UsdfOptional](#usdfoptional)\<String> |  |
+| IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> |  |
+## UsdfScore
+| Name | Minified | Type | Description |
+| - | - | - | - |
+| Id | I | String |  |
+## UsdfScoreEvent
+| Name | Minified | Type | Description |
+| - | - | - | - |
+| Id | I | String |  |
+| EventType | ET | String |  |
+| UtcTimestamp | UT | Date |  |
 ## UsdfParticipant
-Contains data pertaining to the state of a participant.
+Contains data pertaining to the partial state of a participant.
 | Name | Minified | Type | Description |
 | - | - | - | - |
 | Id | I | String | The unique identifier of the participant. |
 | Name | N | [UsdfOptional](#usdfoptional)\<String> | The name of the participant (optional). |
 | IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the entity has been deleted (optional). |
 ## UsdfMarket
-Contains data pertaining to the state of a market.
+Contains data pertaining to the partial state of a market.
 | Name | Minified | Type | Description |
 | - | - | - | - |
 | Id | I | String | The unique identifier of the market. |
@@ -61,7 +99,7 @@ Contains data pertaining to the state of a market.
 | Name | N | [UsdfOptional](#usdfoptional)\<String> | The name of the market (optional). |
 | IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the entity has been deleted (optional). |
 ## UsdfSelection
-Contains data pertaining to the state of a selection.
+Contains data pertaining to the partial state of a selection.
 | Name | Minified | Type | Description |
 | - | - | - | - |
 | Id | I | String | The unique identifier of the selection. |
@@ -71,11 +109,12 @@ Contains data pertaining to the state of a selection.
 | Name | N | [UsdfOptional](#usdfoptional)\<String> | The name of the selection (optional). |
 | IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the entity has been deleted (optional). |
 ## UsdfSourceSelection
-Contains data pertaining to the state of a selection from a single source.
+Contains data pertaining to the partial state of a selection from a single source.
 | Name | Minified | Type | Description |
 | - | - | - | - |
+| Id | I | [UsdfOptional](#usdfoptional)\<String> | The unique identifier of the source selection (optional). |
 | SelectionId | SI | String | The unique identifier of the selection. |
-| SourceId | SO | String | The unique identifier of the source. |
+| SourceId | SO | [UsdfOptional](#usdfoptional)\<String> | The unique identifier of the source (optional). |
 | FixtureId | FI | [UsdfOptional](#usdfoptional)\<String> | The unique identifier of the fixture (optional). |
 | MarketId | MI | [UsdfOptional](#usdfoptional)\<String> | The unique identifier of the market (optional). |
 | SourceName | SN | [UsdfOptional](#usdfoptional)\<String> | The name of the source (optional). |
@@ -87,14 +126,14 @@ Contains data pertaining to the state of a selection from a single source.
 | UtcUpdatedFromSource | UU | [UsdfOptional](#usdfoptional)\<Date> | The time when the source selection was updated from the source (optional). |
 | IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the entity has been deleted (optional). |
 ## UsdfBet
-Contains data pertaining to the state of a bet.
+Contains data pertaining to the partial state of a bet.
 | Name | Minified | Type | Description |
 | - | - | - | - |
 | Id | I | String | The unique identifier of the bet. |
 | CustomerId | CI | String | The unique identifier of the customer. |
 | UtcPlaced | UP | Date | The time when the bet was placed. |
 | UtcAccepted | UA | Date | The time when the bet was accepted. |
-| FixtureId | FI | [UsdfOptional](#usdfoptional)\<String> | The unique identifier of the fixture (optional). |
+| FixtureId | FI | String | The unique identifier of the fixture. |
 | MarketId | MI | [UsdfOptional](#usdfoptional)\<String> | The unique identifier of the market (optional). |
 | SelectionId | SI | String | The unique identifier of the selection. |
 | Price | P | Double | The price at which the bet was accepted. |
@@ -107,7 +146,7 @@ Provides the ability to distinguish between a property being unavailable or expl
 | Name | Minified | Type | Description |
 | - | - | - | - |
 | ExplicitNull | EN | Nullable\<Boolean> | Whether this property has been explicitly defined as null. |
-| Value | V | T | The provided value of this property (must be set if the UsdfOptional is not null. |
+| Value | V | T | The provided value of this property must be set if the UsdfOptional is not null. |
 ## UsdfFixtureStatus
 Represents the lifecycle status of a fixture.
 | Name | Value | Description |
