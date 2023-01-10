@@ -163,7 +163,6 @@ Represents the fixture level of an acyclic sportsbook hierarchy in a single mate
 | - | - | - | - |
 | Id | I | String | The unique identifier of the fixture. |
 | Fixture | F | [UsmfFixture](#usmffixture) | The fixture entity associated with this node. |
-| Scoreboard | S | [UsmfScoreboard](#usmfscoreboard) | The scoreboard entity associated with this node. |
 | Markets | MN | [UsmfMarketNode](#usmfmarketnode) | Market nodes within this fixture. |
 | Bets | B | [UsmfBet](#usmfbet) | Contains data pertaining to the materialized state of bets. |
 ## UsmfMarketNode
