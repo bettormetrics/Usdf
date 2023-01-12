@@ -8,12 +8,6 @@
 - [UsmfSelection](#usmfselection)
 - [UsmfSourceSelection](#usmfsourceselection)
 - [UsmfFixtureStatus](#usmffixturestatus)
-- [UsmfLinkCollection](#usmflinkcollection)
-- [UsmfLinkProvider](#usmflinkprovider)
-- [UsmfLinkFixture](#usmflinkfixture)
-- [UsmfLinkMarket](#usmflinkmarket)
-- [UsmfLinkSelection](#usmflinkselection)
-- [UsmfMergeResult](#usmfmergeresult)
 - [UsmfFixtureNode](#usmffixturenode)
 - [UsmfMarketNode](#usmfmarketnode)
 - [UsmfSelectionNode](#usmfselectionnode)
@@ -108,55 +102,6 @@ Represents the lifecycle status of a fixture.
 | Inplay | 1 | Fixture is in progress. |
 | Completed | 2 | Fixture is completed. |
 | SweeperCompleted | 3 | Fixture has been swept (cleaned up). |
-## UsmfLinkCollection
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| Primary | - | [UsmfLinkProvider](#usmflinkprovider) |  |
-| PrimaryProviderId | - | Integer |  |
-| Comparer | - | IEqualityComparer\<Integer> |  |
-| Count | - | Integer |  |
-| Keys | - | KeyCollection\<Integer,UsmfLinkProvider> |  |
-| Values | - | ValueCollection\<Integer,UsmfLinkProvider> |  |
-| Item | - | [UsmfLinkProvider](#usmflinkprovider) |  |
-## UsmfLinkProvider
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| ProviderId | - | Integer |  |
-| Comparer | - | IEqualityComparer\<String> |  |
-| Count | - | Integer |  |
-| Keys | - | KeyCollection\<String,UsmfLinkFixture> |  |
-| Values | - | ValueCollection\<String,UsmfLinkFixture> |  |
-| Item | - | [UsmfLinkFixture](#usmflinkfixture) |  |
-## UsmfLinkFixture
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| ProviderFixtureId | - | String |  |
-| PrimaryFixtureId | - | String |  |
-| Comparer | - | IEqualityComparer\<String> |  |
-| Count | - | Integer |  |
-| Keys | - | KeyCollection\<String,UsmfLinkMarket> |  |
-| Values | - | ValueCollection\<String,UsmfLinkMarket> |  |
-| Item | - | [UsmfLinkMarket](#usmflinkmarket) |  |
-## UsmfLinkMarket
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| ProviderMarketId | - | String |  |
-| PrimaryMarketId | - | String |  |
-| Comparer | - | IEqualityComparer\<String> |  |
-| Count | - | Integer |  |
-| Keys | - | KeyCollection\<String,UsmfLinkSelection> |  |
-| Values | - | ValueCollection\<String,UsmfLinkSelection> |  |
-| Item | - | [UsmfLinkSelection](#usmflinkselection) |  |
-## UsmfLinkSelection
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| ProviderSelectionId | - | String |  |
-| PrimarySelectionId | - | String |  |
-## UsmfMergeResult
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| HasChanged | - | Boolean |  |
-| MergedEvent | - | [UsmfEvent](#usmfevent) |  |
 ## UsmfFixtureNode
 Represents the fixture level of an acyclic sportsbook hierarchy in a single materialized Usmf event.
 | Name | Minified | Type | Description |
