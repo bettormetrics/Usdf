@@ -8,6 +8,7 @@
 - [UsmfSelection](#usmfselection)
 - [UsmfSourceSelection](#usmfsourceselection)
 - [UsmfFixtureStatus](#usmffixturestatus)
+- [UsmfSelectionStatus](#usmfselectionstatus)
 - [UsmfFixtureNode](#usmffixturenode)
 - [UsmfMarketNode](#usmfmarketnode)
 - [UsmfSelectionNode](#usmfselectionnode)
@@ -67,6 +68,7 @@ Contains data pertaining to the state of a market.
 | FixtureId | FI | String | The unique identifier of the fixture. |
 | TypeId | TI | String | The type of the market. |
 | Name | N | String | The name of the market. |
+| BetDelaySeconds | BD | Nullable\<Integer> | The bet delay for this market. |
 ## UsmfSelection
 Contains data pertaining to the state of a selection.
 | Name | Minified | Type | Description |
@@ -76,6 +78,7 @@ Contains data pertaining to the state of a selection.
 | MarketId | MI | String | The unique identifier of the market. |
 | Line | L | String | The line the selection pertains to. |
 | Name | N | String | The name of the selection. |
+| Status | S | Nullable\<UsmfSelectionStatus> | The status of the selection. |
 ## UsmfSourceSelection
 Contains data pertaining to the state of a selection from a single source.
 | Name | Minified | Type | Description |
@@ -91,8 +94,7 @@ Contains data pertaining to the state of a selection from a single source.
 | ProviderSelectionId | PSI | String | The unique identifier of the selection from the original provider. |
 | Price | P | Double | The price of the source selection. |
 | PriceVolume | PV | Double | The price volume of the source selection. |
-| LayPriceVolume | LPV | Double | The lay price volume of the source selection. |
-| BackLiquidity | BL | Double | The back liquidity of the source selection. |
+| Liquidity | L | Double | The back liquidity of the source selection. |
 | UtcUpdatedFromSource | UU | Date | The time when the source selection was updated from the source. |
 ## UsmfFixtureStatus
 Represents the lifecycle status of a fixture.
@@ -102,6 +104,12 @@ Represents the lifecycle status of a fixture.
 | Inplay | 1 | Fixture is in progress. |
 | Completed | 2 | Fixture is completed. |
 | SweeperCompleted | 3 | Fixture has been swept (cleaned up). |
+## UsmfSelectionStatus
+Represents the status of a selection.
+| Name | Value | Description |
+| - | - | - |
+| Active | 0 | The selection is active. |
+| Removed | 1 | The selection has been removed. |
 ## UsmfFixtureNode
 Represents the fixture level of an acyclic sportsbook hierarchy in a single materialized Usmf event.
 | Name | Minified | Type | Description |
