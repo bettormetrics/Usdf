@@ -4,6 +4,9 @@
 - [UsdfPartitionKeyStrategy](#usdfpartitionkeystrategy)
 - [UsdfEventOrderingStrategy](#usdfeventorderingstrategy)
 - [UsdfFixture](#usdffixture)
+- [UsdfScoreboard](#usdfscoreboard)
+- [UsdfScore](#usdfscore)
+- [UsdfScoreEvent](#usdfscoreevent)
 - [UsdfParticipant](#usdfparticipant)
 - [UsdfMarket](#usdfmarket)
 - [UsdfSelection](#usdfselection)
@@ -11,12 +14,14 @@
 - [UsdfBet](#usdfbet)
 - [UsdfOptional](#usdfoptional)
 - [UsdfFixtureStatus](#usdffixturestatus)
+- [UsdfSelectionStatus](#usdfselectionstatus)
 ## UsdfEvent
 Encapsulates a single unified sports data format event (a fact).
 | Name | Minified | Type | Description |
 | - | - | - | - |
 | Header | H | [UsdfHeader](#usdfheader) | Contains high level ordering, synchronisation, and origin data for the event. |
 | Fixture | F | [UsdfFixture](#usdffixture) | Contains data pertaining to the partial state of fixtures. |
+| Scoreboard | S | [UsdfScoreboard](#usdfscoreboard) | Contains data pertaining to the partial state of fixture scoreboards. |
 | Market | M | [UsdfMarket](#usdfmarket) | Contains data pertaining to the partial state of markets. |
 | Selection | SL | [UsdfSelection](#usdfselection) | Contains data pertaining to the partial state of selections. |
 | SourceSelection | SS | [UsdfSourceSelection](#usdfsourceselection) | Contains data pertaining to the partial state of selections from a single source. |
@@ -60,6 +65,24 @@ Contains data pertaining to the partial state of a fixture.
 | FixtureStatus | FS | [UsdfOptional](#usdfoptional)\<UsdfFixtureStatus> | The lifecycle status of this fixture (optional). |
 | IsVirtual | IV | [UsdfOptional](#usdfoptional)\<Boolean> | Whether this is a simulated virtual fixture (optional). |
 | IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the entity has been deleted (optional). |
+## UsdfScoreboard
+| Name | Minified | Type | Description |
+| - | - | - | - |
+| FixtureId | FI | String |  |
+| Scores | S | [UsdfScore](#usdfscore) |  |
+| ScoreEvents | SE | [UsdfScoreEvent](#usdfscoreevent) |  |
+| PeriodId | PI | [UsdfOptional](#usdfoptional)\<String> |  |
+| IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> |  |
+## UsdfScore
+| Name | Minified | Type | Description |
+| - | - | - | - |
+| Id | I | String |  |
+## UsdfScoreEvent
+| Name | Minified | Type | Description |
+| - | - | - | - |
+| Id | I | String |  |
+| EventType | ET | String |  |
+| UtcTimestamp | UT | Date |  |
 ## UsdfParticipant
 Contains data pertaining to the partial state of a participant.
 | Name | Minified | Type | Description |
@@ -76,6 +99,7 @@ Contains data pertaining to the partial state of a market.
 | TypeId | TI | [UsdfOptional](#usdfoptional)\<String> | The type of the market (optional). |
 | Name | N | [UsdfOptional](#usdfoptional)\<String> | The name of the market (optional). |
 | IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the entity has been deleted (optional). |
+| BetDelaySeconds | BD | [UsdfOptional](#usdfoptional)\<Integer> | The bet delay for this market (optional). |
 ## UsdfSelection
 Contains data pertaining to the partial state of a selection.
 | Name | Minified | Type | Description |
@@ -86,6 +110,7 @@ Contains data pertaining to the partial state of a selection.
 | Line | L | [UsdfOptional](#usdfoptional)\<String> | The line the selection pertains to (optional). |
 | Name | N | [UsdfOptional](#usdfoptional)\<String> | The name of the selection (optional). |
 | IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the entity has been deleted (optional). |
+| Status | S | [UsdfOptional](#usdfoptional)\<UsdfSelectionStatus> | The status of the selection (optional). |
 ## UsdfSourceSelection
 Contains data pertaining to the partial state of a selection from a single source.
 | Name | Minified | Type | Description |
@@ -99,8 +124,7 @@ Contains data pertaining to the partial state of a selection from a single sourc
 | IsSuspended | IS | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the source selection is suspended (optional). |
 | Price | P | [UsdfOptional](#usdfoptional)\<Double> | The price of the source selection (optional). |
 | PriceVolume | PV | [UsdfOptional](#usdfoptional)\<Double> | The price volume of the source selection (optional). |
-| LayPriceVolume | LPV | [UsdfOptional](#usdfoptional)\<Double> | The lay price volume of the source selection (optional). |
-| BackLiquidity | BL | [UsdfOptional](#usdfoptional)\<Double> | The back liquidity of the source selection (optional). |
+| Liquidity | BL | [UsdfOptional](#usdfoptional)\<Double> | The liquidity of the source selection (optional). |
 | UtcUpdatedFromSource | UU | [UsdfOptional](#usdfoptional)\<Date> | The time when the source selection was updated from the source (optional). |
 | IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the entity has been deleted (optional). |
 ## UsdfBet
@@ -133,3 +157,9 @@ Represents the lifecycle status of a fixture.
 | Inplay | 1 | Fixture is in progress. |
 | Completed | 2 | Fixture is completed. |
 | SweeperCompleted | 3 | Fixture has been swept (cleaned up). |
+## UsdfSelectionStatus
+Represents the status of a selection.
+| Name | Value | Description |
+| - | - | - |
+| Active | 0 | The selection is active. |
+| Removed | 1 | The selection has been removed. |
