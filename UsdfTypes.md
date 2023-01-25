@@ -4,6 +4,7 @@
 - [UsdfPartitionKeyStrategy](#usdfpartitionkeystrategy)
 - [UsdfEventOrderingStrategy](#usdfeventorderingstrategy)
 - [UsdfFixture](#usdffixture)
+- [UsdfScoreboard](#usdfscoreboard)
 - [UsdfParticipant](#usdfparticipant)
 - [UsdfMarket](#usdfmarket)
 - [UsdfSelection](#usdfselection)
@@ -18,6 +19,7 @@ Encapsulates a single unified sports data format event (a fact).
 | - | - | - | - |
 | Header | H | [UsdfHeader](#usdfheader) | Contains high level ordering, synchronisation, and origin data for the event. |
 | Fixture | F | [UsdfFixture](#usdffixture) | Contains data pertaining to the partial state of fixtures. |
+| Scoreboard | S | [UsdfScoreboard](#usdfscoreboard) | Contains data pertaining to the partial state of fixture scoreboards. |
 | Market | M | [UsdfMarket](#usdfmarket) | Contains data pertaining to the partial state of markets. |
 | Selection | SL | [UsdfSelection](#usdfselection) | Contains data pertaining to the partial state of selections. |
 | SourceSelection | SS | [UsdfSourceSelection](#usdfsourceselection) | Contains data pertaining to the partial state of selections from a single source. |
@@ -58,8 +60,14 @@ Contains data pertaining to the partial state of a fixture.
 | Participant | P | [UsdfParticipant](#usdfparticipant) | Contains data pertaining to the partial state of participants in this fixture. |
 | UtcStart | US | [UsdfOptional](#usdfoptional)\<Date> | The time at which this fixture is due to start (optional). |
 | IsSuspendedUntilPriced | ISUP | [UsdfOptional](#usdfoptional)\<Boolean> | Whether all markets in this fixture are suspended until subsequent prices are received (optional). |
-| FixtureStatus | FS | [UsdfOptional](#usdfoptional)\<UsdfFixtureStatus> | The lifecycle status of this fixture (optional). |
 | IsVirtual | IV | [UsdfOptional](#usdfoptional)\<Boolean> | Whether this is a simulated virtual fixture (optional). |
+| IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the entity has been deleted (optional). |
+## UsdfScoreboard
+Contains data pertaining to the lifecycle status of the fixture.
+| Name | Minified | Type | Description |
+| - | - | - | - |
+| FixtureId | FI | String | The unique identifier of the fixture. |
+| FixtureStatus | FS | [UsdfOptional](#usdfoptional)\<UsdfFixtureStatus> | The lifecycle status of this fixture (optional). |
 | IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the entity has been deleted (optional). |
 ## UsdfParticipant
 Contains data pertaining to the partial state of a participant.
@@ -77,7 +85,7 @@ Contains data pertaining to the partial state of a market.
 | TypeId | TI | [UsdfOptional](#usdfoptional)\<String> | The type of the market (optional). |
 | Name | N | [UsdfOptional](#usdfoptional)\<String> | The name of the market (optional). |
 | IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the entity has been deleted (optional). |
-| BetDelaySeconds | BD | [UsdfOptional](#usdfoptional)\<Integer> | The bet delay for this market (optional). |
+| BetDelaySeconds | BD | [UsdfOptional](#usdfoptional)\<Integer> | The bet delay (in seconds) for this market (optional). |
 ## UsdfSelection
 Contains data pertaining to the partial state of a selection.
 | Name | Minified | Type | Description |
@@ -134,7 +142,7 @@ Represents the lifecycle status of a fixture.
 | Pregame | 0 | Fixture has not started. |
 | Inplay | 1 | Fixture is in progress. |
 | Completed | 2 | Fixture is completed. |
-| SweeperCompleted | 3 | Fixture has been swept (cleaned up). |
+| Finalized | 3 | Fixture has been finalized. <br>A fixture can be finalized by an internal process, in the event that a completion is not received from the provider. |
 ## UsdfSelectionStatus
 Represents the status of a selection.
 | Name | Value | Description |

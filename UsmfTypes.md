@@ -2,6 +2,7 @@
 - [UsmfEvent](#usmfevent)
 - [UsmfHeader](#usmfheader)
 - [UsmfFixture](#usmffixture)
+- [UsmfFixtureProviderScoreboard](#usmffixtureproviderscoreboard)
 - [UsmfBet](#usmfbet)
 - [UsmfFixtureParticipant](#usmffixtureparticipant)
 - [UsmfMarket](#usmfmarket)
@@ -24,6 +25,7 @@ Contains high level ordering, synchronisation, and origin data for the event.
 | - | - | - | - |
 | UtcTimestamp | UT | Date | The time at which the data required to generate this event was constituted. |
 | PrimaryProviderId | PPI | Integer | The unique identifier of the primary provider of the data required to generate this event. |
+| CheckpointIdentifier | CI | Nullable\<Guid> | If populated, indicates that a significant checkpoint has been reached in the data e.g. the fixture has finished and all data is available. |
 ## UsmfFixture
 Contains data pertaining to the state of a fixture.
 | Name | Minified | Type | Description |
@@ -37,8 +39,13 @@ Contains data pertaining to the state of a fixture.
 | CompetitionName | CN | String | The name of the competition of this fixture. |
 | UtcStart | US | Nullable\<Date> | The time at which this fixture is due to start. |
 | Participants | P | [UsmfFixtureParticipant](#usmffixtureparticipant) | Contains data pertaining to the state of participants in this fixture. |
-| FixtureStatus | FS | Nullable\<UsmfFixtureStatus> | The lifecycle status of this fixture. |
 | IsVirtual | IV | Boolean | Whether this is a simulated virtual fixture. |
+## UsmfFixtureProviderScoreboard
+Contains data pertaining to the state of a scoreboard.
+| Name | Minified | Type | Description |
+| - | - | - | - |
+| ProviderId | PI | Integer | The unique identifier of the provider of the data required to generate this event. |
+| FixtureStatus | FS | Nullable\<UsmfFixtureStatus> | The lifecycle status of this fixture. |
 ## UsmfBet
 Contains data pertaining to a placed bet.
 | Name | Minified | Type | Description |
@@ -65,19 +72,25 @@ Contains data pertaining to the state of a market.
 | Name | Minified | Type | Description |
 | - | - | - | - |
 | Id | I | String | The unique identifier of the market. |
+| ProviderId | PI | Integer | The unique identifier of the provider for this market. |
 | FixtureId | FI | String | The unique identifier of the fixture. |
 | TypeId | TI | String | The type of the market. |
+| SubTypeId | STI | String | The sub type of the market. |
 | Name | N | String | The name of the market. |
+| IsVirtual | IV | Nullable\<Boolean> | Defines whether this market has been virtually projected. |
 | BetDelaySeconds | BD | Nullable\<Integer> | The bet delay for this market. |
 ## UsmfSelection
 Contains data pertaining to the state of a selection.
 | Name | Minified | Type | Description |
 | - | - | - | - |
 | Id | I | String | The unique identifier of the selection. |
+| ProviderId | PI | Integer | The unique identifier of the provider for this selection. |
 | FixtureId | FI | String | The unique identifier of the fixture. |
 | MarketId | MI | String | The unique identifier of the market. |
+| Type | T | String | The type of the selection. |
 | Line | L | String | The line the selection pertains to. |
 | Name | N | String | The name of the selection. |
+| IsVirtual | IV | Nullable\<Boolean> | Defines whether this selection has been virtually projected. |
 | Status | S | Nullable\<UsmfSelectionStatus> | The status of the selection. |
 ## UsmfSourceSelection
 Contains data pertaining to the state of a selection from a single source.
@@ -103,7 +116,7 @@ Represents the lifecycle status of a fixture.
 | Pregame | 0 | Fixture has not started. |
 | Inplay | 1 | Fixture is in progress. |
 | Completed | 2 | Fixture is completed. |
-| SweeperCompleted | 3 | Fixture has been swept (cleaned up). |
+| Finalized | 3 | Fixture has been finalized. <br>A fixture can be finalized in the event that a completion is not received from the provider. |
 ## UsmfSelectionStatus
 Represents the status of a selection.
 | Name | Value | Description |
@@ -116,6 +129,7 @@ Represents the fixture level of an acyclic sportsbook hierarchy in a single mate
 | - | - | - | - |
 | Id | I | String | The unique identifier of the fixture. |
 | Fixture | F | [UsmfFixture](#usmffixture) | The fixture entity associated with this node. |
+| ProviderScoreboards | PS | [UsmfFixtureProviderScoreboard](#usmffixtureproviderscoreboard) | The provider scoreboard entities associated with this node. |
 | Markets | MN | [UsmfMarketNode](#usmfmarketnode) | Market nodes within this fixture. |
 | Bets | B | [UsmfBet](#usmfbet) | Contains data pertaining to the materialized state of bets. |
 ## UsmfMarketNode
@@ -123,12 +137,12 @@ Represents the market level of an acyclic sportsbook hierarchy in a single mater
 | Name | Minified | Type | Description |
 | - | - | - | - |
 | Id | I | String | The unique identifier of the market. |
-| Market | M | [UsmfMarket](#usmfmarket) | The market entity associated with this node. |
+| ProviderMarkets | PM | [UsmfMarket](#usmfmarket) | The provider market entities associated with this node. |
 | Selections | SN | [UsmfSelectionNode](#usmfselectionnode) | Selection nodes within this market. |
 ## UsmfSelectionNode
 Represents the selection level of an acyclic sportsbook hierarchy in a single materialized Usmf event.
 | Name | Minified | Type | Description |
 | - | - | - | - |
 | Id | I | String | The unique identifier of the selection. |
-| Selection | S | [UsmfSelection](#usmfselection) | The selection entity associated with this node. |
+| ProviderSelections | PS | [UsmfSelection](#usmfselection) | The provider selection entities associated with this node. |
 | SourceSelections | SSN | [UsmfSourceSelection](#usmfsourceselection) | Source selection nodes within this selection. |
