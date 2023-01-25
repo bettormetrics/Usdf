@@ -1,5 +1,4 @@
 # Usmf Types
-- [UsmfConvergenceSettings](#usmfconvergencesettings)
 - [UsmfEvent](#usmfevent)
 - [UsmfHeader](#usmfheader)
 - [UsmfFixture](#usmffixture)
@@ -11,24 +10,9 @@
 - [UsmfSourceSelection](#usmfsourceselection)
 - [UsmfFixtureStatus](#usmffixturestatus)
 - [UsmfSelectionStatus](#usmfselectionstatus)
-- [UsmfLinkCollection](#usmflinkcollection)
-- [UsmfLinkProvider](#usmflinkprovider)
-- [UsmfLinkFixture](#usmflinkfixture)
-- [UsmfLinkMarket](#usmflinkmarket)
-- [UsmfLinkSelection](#usmflinkselection)
-- [UsmfMergeResult](#usmfmergeresult)
 - [UsmfFixtureNode](#usmffixturenode)
 - [UsmfMarketNode](#usmfmarketnode)
 - [UsmfSelectionNode](#usmfselectionnode)
-- [UsmfVirtualMarketProjector](#usmfvirtualmarketprojector)
-## UsmfConvergenceSettings
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| IncludeSecondaryProviderScoreboards | - | Boolean |  |
-| IncludeSecondaryProviderMarkets | - | Boolean |  |
-| IncludeSecondaryProviderSelections | - | Boolean |  |
-| MarketIds | - | HashSet\<String> |  |
-| IncludeAllMarkets | - | Boolean |  |
 ## UsmfEvent
 Encapsulates a single unified sports materialized format event (a fact).
 | Name | Minified | Type | Description |
@@ -140,67 +124,6 @@ Represents the status of a selection.
 | - | - | - |
 | Active | 0 | The selection is active. |
 | Removed | 1 | The selection has been removed. |
-## UsmfLinkCollection
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| Primary | - | [UsmfLinkProvider](#usmflinkprovider) |  |
-| PrimaryProviderId | - | Integer |  |
-| Comparer | - | IEqualityComparer\<Integer> |  |
-| Count | - | Integer |  |
-| Keys | - | KeyCollection\<Integer,UsmfLinkProvider> |  |
-| Values | - | ValueCollection\<Integer,UsmfLinkProvider> |  |
-| Item | - | [UsmfLinkProvider](#usmflinkprovider) |  |
-## UsmfLinkProvider
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| ProviderId | - | Integer |  |
-| Comparer | - | IEqualityComparer\<String> |  |
-| Count | - | Integer |  |
-| Keys | - | KeyCollection\<String,UsmfLinkFixture> |  |
-| Values | - | ValueCollection\<String,UsmfLinkFixture> |  |
-| Item | - | [UsmfLinkFixture](#usmflinkfixture) |  |
-## UsmfLinkFixture
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| ProviderFixtureId | - | String |  |
-| PrimaryFixtureId | - | String |  |
-| Comparer | - | IEqualityComparer\<String> |  |
-| Count | - | Integer |  |
-| Keys | - | KeyCollection\<String,UsmfLinkMarket> |  |
-| Values | - | ValueCollection\<String,UsmfLinkMarket> |  |
-| Item | - | [UsmfLinkMarket](#usmflinkmarket) |  |
-## UsmfLinkMarket
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| ProviderId | - | Integer |  |
-| ProviderMarketId | - | String |  |
-| PrimaryMarketIds | - | String |  |
-| MarketTypeId | - | Integer |  |
-| MarketSubTypeId | - | Nullable\<Integer> |  |
-| Comparer | - | IEqualityComparer\<String> |  |
-| Count | - | Integer |  |
-| Keys | - | KeyCollection\<String,UsmfLinkSelection> |  |
-| Values | - | ValueCollection\<String,UsmfLinkSelection> |  |
-| Item | - | [UsmfLinkSelection](#usmflinkselection) |  |
-## UsmfLinkSelection
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| ProviderId | - | Integer |  |
-| ProviderSelectionId | - | String |  |
-| PrimarySelectionId | - | String |  |
-| MarketTypeId | - | Integer |  |
-| MarketSubTypeId | - | Nullable\<Integer> |  |
-| MarketValue | - | String |  |
-| MarketId | - | String |  |
-| MarketName | - | String |  |
-| SelectionId | - | String |  |
-| SelectionType | - | String |  |
-| SelectionName | - | String |  |
-## UsmfMergeResult
-| Name | Minified | Type | Description |
-| - | - | - | - |
-| HasChanged | - | Boolean |  |
-| MergedEvent | - | [UsmfEvent](#usmfevent) |  |
 ## UsmfFixtureNode
 Represents the fixture level of an acyclic sportsbook hierarchy in a single materialized Usmf event.
 | Name | Minified | Type | Description |
@@ -224,4 +147,3 @@ Represents the selection level of an acyclic sportsbook hierarchy in a single ma
 | Id | I | String | The unique identifier of the selection. |
 | ProviderSelections | PS | [UsmfSelection](#usmfselection) | The provider selection entities associated with this node. |
 | SourceSelections | SSN | [UsmfSourceSelection](#usmfsourceselection) | Source selection nodes within this selection. |
-## UsmfVirtualMarketProjector
