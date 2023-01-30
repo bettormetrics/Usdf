@@ -86,6 +86,7 @@ Contains data pertaining to the partial state of a market.
 | Name | N | [UsdfOptional](#usdfoptional)\<String> | The name of the market (optional). |
 | IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the entity has been deleted (optional). |
 | BetDelaySeconds | BD | [UsdfOptional](#usdfoptional)\<Integer> | The bet delay (in seconds) for this market (optional). |
+| TradedVolume | TV | Nullable\<Double> | The traded volume for this market. |
 ## UsdfSelection
 Contains data pertaining to the partial state of a selection.
 | Name | Minified | Type | Description |
@@ -97,6 +98,7 @@ Contains data pertaining to the partial state of a selection.
 | Name | N | [UsdfOptional](#usdfoptional)\<String> | The name of the selection (optional). |
 | IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the entity has been deleted (optional). |
 | Status | S | [UsdfOptional](#usdfoptional)\<UsdfSelectionStatus> | The status of the selection (optional). |
+| TradedVolume | TV | Nullable\<Double> | The traded volume for this selection. |
 ## UsdfSourceSelection
 Contains data pertaining to the partial state of a selection from a single source.
 | Name | Minified | Type | Description |
@@ -109,8 +111,7 @@ Contains data pertaining to the partial state of a selection from a single sourc
 | SourceName | SN | [UsdfOptional](#usdfoptional)\<String> | The name of the source (optional). |
 | IsSuspended | IS | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the source selection is suspended (optional). |
 | Price | P | [UsdfOptional](#usdfoptional)\<Double> | The price of the source selection (optional). |
-| PriceVolume | PV | [UsdfOptional](#usdfoptional)\<Double> | The price volume of the source selection (optional). |
-| Liquidity | BL | [UsdfOptional](#usdfoptional)\<Double> | The liquidity of the source selection (optional). |
+| ExchangePrices | EP | Double[][] | The exchange prices of the source selection. |
 | UtcUpdatedFromSource | UU | [UsdfOptional](#usdfoptional)\<Date> | The time when the source selection was updated from the source (optional). |
 | IsDeleted | D | [UsdfOptional](#usdfoptional)\<Boolean> | Whether the entity has been deleted (optional). |
 ## UsdfBet

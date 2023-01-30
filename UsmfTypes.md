@@ -79,6 +79,7 @@ Contains data pertaining to the state of a market.
 | Name | N | String | The name of the market. |
 | IsVirtual | IV | Nullable\<Boolean> | Defines whether this market has been virtually projected. |
 | BetDelaySeconds | BD | Nullable\<Integer> | The bet delay for this market. |
+| TradedVolume | TV | Nullable\<Double> | The traded volume for this market. |
 ## UsmfProviderSelection
 Contains data pertaining to the state of a selection.
 | Name | Minified | Type | Description |
@@ -92,6 +93,7 @@ Contains data pertaining to the state of a selection.
 | Name | N | String | The name of the selection. |
 | IsVirtual | IV | Nullable\<Boolean> | Defines whether this selection has been virtually projected. |
 | Status | S | Nullable\<UsmfSelectionStatus> | The status of the selection. |
+| TradedVolume | TV | Nullable\<Double> | The traded volume for this selection. |
 ## UsmfSourceSelection
 Contains data pertaining to the state of a selection from a single source.
 | Name | Minified | Type | Description |
@@ -106,8 +108,7 @@ Contains data pertaining to the state of a selection from a single source.
 | ProviderMarketId | PMI | String | The unique identifier of the market from the original provider. |
 | ProviderSelectionId | PSI | String | The unique identifier of the selection from the original provider. |
 | Price | P | Double | The price of the source selection. |
-| PriceVolume | PV | Double | The price volume of the source selection. |
-| Liquidity | L | Double | The back liquidity of the source selection. |
+| ExchangePrices | EP | Double[][] | The exchange prices of the source selection. |
 | UtcUpdatedFromSource | UU | Date | The time when the source selection was updated from the source. |
 ## UsmfFixtureStatus
 Represents the lifecycle status of a fixture.
