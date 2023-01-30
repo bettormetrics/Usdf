@@ -5,8 +5,8 @@
 - [UsmfFixtureProviderScoreboard](#usmffixtureproviderscoreboard)
 - [UsmfBet](#usmfbet)
 - [UsmfFixtureParticipant](#usmffixtureparticipant)
-- [UsmfMarket](#usmfmarket)
-- [UsmfSelection](#usmfselection)
+- [UsmfProviderMarket](#usmfprovidermarket)
+- [UsmfProviderSelection](#usmfproviderselection)
 - [UsmfSourceSelection](#usmfsourceselection)
 - [UsmfFixtureStatus](#usmffixturestatus)
 - [UsmfSelectionStatus](#usmfselectionstatus)
@@ -67,7 +67,7 @@ Contains data pertaining to the state of a participant.
 | - | - | - | - |
 | Id | I | String | The unique identifier of the participant. |
 | Name | N | String | The name of the participant. |
-## UsmfMarket
+## UsmfProviderMarket
 Contains data pertaining to the state of a market.
 | Name | Minified | Type | Description |
 | - | - | - | - |
@@ -79,7 +79,7 @@ Contains data pertaining to the state of a market.
 | Name | N | String | The name of the market. |
 | IsVirtual | IV | Nullable\<Boolean> | Defines whether this market has been virtually projected. |
 | BetDelaySeconds | BD | Nullable\<Integer> | The bet delay for this market. |
-## UsmfSelection
+## UsmfProviderSelection
 Contains data pertaining to the state of a selection.
 | Name | Minified | Type | Description |
 | - | - | - | - |
@@ -116,7 +116,7 @@ Represents the lifecycle status of a fixture.
 | Pregame | 0 | Fixture has not started. |
 | Inplay | 1 | Fixture is in progress. |
 | Completed | 2 | Fixture is completed. |
-| Finalized | 3 | Fixture has been finalized. <br>A fixture can be finalized in the event that a completion is not received from the provider. |
+| Finalized | 3 | Fixture has been finalized. A fixture can be finalized in the event that a completion is not received from the provider. |
 ## UsmfSelectionStatus
 Represents the status of a selection.
 | Name | Value | Description |
@@ -137,12 +137,12 @@ Represents the market level of an acyclic sportsbook hierarchy in a single mater
 | Name | Minified | Type | Description |
 | - | - | - | - |
 | Id | I | String | The unique identifier of the market. |
-| ProviderMarkets | PM | [UsmfMarket](#usmfmarket) | The provider market entities associated with this node. |
+| ProviderMarkets | PM | [UsmfProviderMarket](#usmfprovidermarket) | The provider market entities associated with this node. |
 | Selections | SN | [UsmfSelectionNode](#usmfselectionnode) | Selection nodes within this market. |
 ## UsmfSelectionNode
 Represents the selection level of an acyclic sportsbook hierarchy in a single materialized Usmf event.
 | Name | Minified | Type | Description |
 | - | - | - | - |
 | Id | I | String | The unique identifier of the selection. |
-| ProviderSelections | PS | [UsmfSelection](#usmfselection) | The provider selection entities associated with this node. |
+| ProviderSelections | PS | [UsmfProviderSelection](#usmfproviderselection) | The provider selection entities associated with this node. |
 | SourceSelections | SSN | [UsmfSourceSelection](#usmfsourceselection) | Source selection nodes within this selection. |
