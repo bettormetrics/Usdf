@@ -142,7 +142,7 @@ Represents the lifecycle status of a fixture.
 | Pregame | 0 | Fixture has not started. |
 | Inplay | 1 | Fixture is in progress. |
 | Completed | 2 | Fixture is completed. |
-| Finalized | 3 | Fixture has been finalized. <br>A fixture can be finalized by an internal process, in the event that a completion is not received from the provider. |
+| Finalized | 3 | Fixture has been finalized.<br>A fixture can be finalized by an internal process, in the event that a completion is not received from the provider. |
 ## UsdfSelectionStatus
 Represents the status of a selection.
 | Name | Value | Description |
