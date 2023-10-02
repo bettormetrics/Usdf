@@ -12,14 +12,18 @@
 - [UsmfSideIdentifierId](#usmfsideidentifierid)
 - [UsmfBet](#usmfbet)
 - [UsmfFixtureParticipant](#usmffixtureparticipant)
+- [UsmfParticipantSide](#usmfparticipantside)
 - [UsmfProviderMarket](#usmfprovidermarket)
 - [UsmfProviderSelection](#usmfproviderselection)
 - [UsmfSourceSelection](#usmfsourceselection)
 - [UsmfFixtureStatus](#usmffixturestatus)
 - [UsmfSelectionStatus](#usmfselectionstatus)
+- [UsmfMarketMappingRule](#usmfmarketmappingrule)
+- [UsmfMaterializationHierarchy](#usmfmaterializationhierarchy)
 - [UsmfFixtureNode](#usmffixturenode)
 - [UsmfMarketNode](#usmfmarketnode)
 - [UsmfSelectionNode](#usmfselectionnode)
+- [UsmfSelectionMappingRule](#usmfselectionmappingrule)
 ## UsmfEvent
 Encapsulates a single unified sports materialized format event (a fact).
 | Name | Minified | Type | Description |
@@ -54,6 +58,9 @@ Contains data pertaining to the state of a fixture.
 | UtcStart | US | Nullable\<Date> | The time at which this fixture is due to start. |
 | Participants | P | [UsmfFixtureParticipant](#usmffixtureparticipant) | Contains data pertaining to the state of participants in this fixture. |
 | IsVirtual | IV | Boolean | Whether this is a simulated virtual fixture. |
+| SuspendedUntilPricedLastEventId | SUPLEI | String | The id of the event which the active reason was set for. |
+| SuspendedUntilPricedReasonId | SUPRI | String | The description of the active reason why currently suspended markets are suspended while under a fixture level suspension. |
+| SuspendedUntilPricedReasonDescription | SUPRD | String | The description of the active reason why currently suspended markets are suspended while under a fixture level suspension. |
 ## UsmfFixtureProviderScoreboard
 Contains data pertaining to the state of a scoreboard.
 | Name | Minified | Type | Description |
@@ -103,6 +110,7 @@ The style in which period transitions are handled for the periods in this scoreb
 | None | 0 | No transition type. |
 | NewPeriod | 1 | Transition on new period. |
 | NewTurn | 2 | Transition on new turn. |
+| Never | 3 | This provider doesn't support periods in any events. |
 ## UsmfInplayEvent
 Contains the data pertaining to an event which has occurred in a fixture.
 | Name | Minified | Type | Description |
@@ -160,6 +168,13 @@ Contains data pertaining to the state of a participant.
 | - | - | - | - |
 | Id | I | String | The unique identifier of the participant. |
 | Name | N | String | The name of the participant. |
+| Side | S | Nullable\<UsmfParticipantSide> | The participants side e.g. home or away. |
+## UsmfParticipantSide
+The participants side e.g. Home or Away
+| Name | Value | Description |
+| - | - | - |
+| Home | 0 | Participant is the Home team/player |
+| Away | 1 | Participant is the Away team/player |
 ## UsmfProviderMarket
 Contains data pertaining to the state of a market.
 | Name | Minified | Type | Description |
@@ -204,6 +219,7 @@ Contains data pertaining to the state of a selection from a single source.
 | Price | P | Double | The price of the source selection. |
 | ExchangePrices | EP | Double | The exchange prices of the source selection. |
 | UtcUpdatedFromSource | UU | Date | The time when the source selection was updated from the source. |
+| SuspendedUntilPricedEventId | SUPEI | String | The id of the active suspension until priced event. |
 ## UsmfFixtureStatus
 Represents the lifecycle status of a fixture.
 | Name | Value | Description |
@@ -218,6 +234,23 @@ Represents the status of a selection.
 | - | - | - |
 | Active | 0 | The selection is active. |
 | Removed | 1 | The selection has been removed. |
+## UsmfMarketMappingRule
+A rule for how this market should be mapped.
+| Name | Minified | Type | Description |
+| - | - | - | - |
+| TargetMarketId | - | String | The id of the target market to be mapped to. |
+| TargetMarketName | - | String | The name of the target market to be mapped to. |
+| TargetMarketTypeId | - | String | The type of the target market to be mapped to. |
+| TargetSelectionIdPattern | - | String | The pattern of the id of the target selection to be mapped to. |
+| TargetSelectionNamePattern | - | String | The pattern of the name of the target selection to be mapped to. |
+| Line | - | String | The current active line of this rule. |
+| LinePrevious | - | String | The previous active line of this rule. |
+## UsmfMaterializationHierarchy
+| Name | Minified | Type | Description |
+| - | - | - | - |
+| Fixture | - | [UsmfFixtureStateNode](#usmffixturestatenode) |  |
+| Market | - | [UsmfMarketStateNode](#usmfmarketstatenode) |  |
+| Selection | - | [UsmfSelectionStateNode](#usmfselectionstatenode) |  |
 ## UsmfFixtureNode
 Represents the fixture level of an acyclic sportsbook hierarchy in a single materialized Usmf event.
 | Name | Minified | Type | Description |
@@ -241,3 +274,9 @@ Represents the selection level of an acyclic sportsbook hierarchy in a single ma
 | Id | I | String | The unique identifier of the selection. |
 | ProviderSelections | PS | [UsmfProviderSelection](#usmfproviderselection) | The provider selection entities associated with this node. |
 | SourceSelections | SSN | [UsmfSourceSelection](#usmfsourceselection) | Source selection nodes within this selection. |
+## UsmfSelectionMappingRule
+A rule for how this selection should be mapped.
+| Name | Minified | Type | Description |
+| - | - | - | - |
+| TargetSelectionId | - | String | The id of the target selection to be mapped to. |
+| TargetSelectionName | - | String | The name of the target selection to be mapped to. |
